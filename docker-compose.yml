@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  authorship-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: authorship-api
+    ports:
+      - 4200:4200
+    container_name: authorship-api
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
